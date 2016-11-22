@@ -151,6 +151,8 @@ EDGE_FILES := \
 	$(DATA)/edges/wordnet/wordnet.msgpack \
 	$(DATA)/edges/verbosity/verbosity.msgpack \
 	$(DATA)/edges/globalmind/globalmind.msgpack \
+        $(DATA)/edges/pixability/pix_audiences.msgpack \
+        $(DATA)/edges/pixability/platform_hierarchies.msgpack \
 	$(DATA)/edges/umbel/umbel.msgpack \
 	$(DATA)/edges/jmdict/jmdict.msgpack \
 	$(patsubst %,$(DATA)/edges/wiktionary/en/wiktionary_%, $(MPIECES)) \
@@ -370,7 +372,7 @@ $(DATA)/edges/%.csv: $(DATA)/edges/%.msgpack $(BUILDERS)/msgpack_to_csv.py
 # Make the subset of the edges available that can be reused under the CC-By
 # license (as opposed to the majority of them, available under CC-By-SA).
 $(DATA)/edges/cc_by_edges.csv: $(SORTED_FILES)
-	cat $(SORTED_FILES) | grep -E "/d/(conceptnet|globalmind|umbel|verbosity|wordnet)" > $@
+	cat $(SORTED_FILES) | grep -E "/d/(conceptnet|globalmind|umbel|verbosity|wordnet|pixability)" > $@
 
 # Gather all the csv files and split them into 20 pieces.
 #
